@@ -1,7 +1,7 @@
 /*
  * @Author: ZH
  * @Date: 2023-01-30 15:39:38
- * @LastEditTime: 2023-01-31 17:09:55
+ * @LastEditTime: 2023-02-03 21:17:44
  * @LastEditors: ZH
  * @Description:
  */
@@ -140,9 +140,8 @@ export class FireWork {
     const elapsedTime = this.clock.getElapsedTime();
 
     if (elapsedTime < 1) {
-      console.log("@@@");
       this.material.uniforms.uTime.value = elapsedTime;
-      this.material.uniforms.uSize.value = 20;
+      this.material.uniforms.uSize.value = 50;
     } else {
       const deltime = elapsedTime - 1;
       //让点元素消失
@@ -180,6 +179,6 @@ export class FireWork {
   }
   // 玫瑰花曲线
   j9(o) {
-    return 5 * Math.cos((6 * o * Math.PI) / 180);
+    return 10 * Math.cos((6 * o * Math.PI) / 180);
   }
 }
