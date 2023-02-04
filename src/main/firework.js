@@ -44,7 +44,7 @@ export class FireWork {
       depthWrite: false,
       uniforms: {
         uTime: { value: 0 },
-        uSize: { value: 0 },
+        uSize: { value: 50 },
         uColor: { value: new THREE.Color(this.color) },
       },
     });
@@ -141,7 +141,7 @@ export class FireWork {
 
     if (elapsedTime < 1) {
       this.material.uniforms.uTime.value = elapsedTime;
-      this.material.uniforms.uSize.value = 50;
+      
     } else {
       const deltime = elapsedTime - 1;
       //让点元素消失

@@ -5,9 +5,23 @@ import gsap from "gsap";
 import * as dat from "dat.gui";
 import { FireWork } from "./firework";
 
+let debugShow = false
+const debugObject = {
+  pointSize: 40,
+  explodePointSize:20
+  
+}
 
 //创建gui对象
-const gui = new dat.GUI();
+if (window.location.hash === '#debug') debugShow = true
+if (debugShow) {
+  const gui = new dat.GUI({width:400});
+  gui.add(debugObject, 'pointSize').min(0).max(100).step(0.01).name('烟花初始粒子大小')
+  gui.add(debugObject,'explodePointSize').min(0).max(50).step(0.01).name('烟花爆炸粒子大小')
+}
+
+
+
 
 // 初始化场景
 const scene = new THREE.Scene();
@@ -27,11 +41,6 @@ camera.aspect = window.innerWidth / window.innerHeight;
 //   更新摄像机的投影矩阵
 camera.updateProjectionMatrix();
 scene.add(camera);
-
-// 加入辅助轴，帮助我们查看3维坐标轴
-// const axesHelper = new THREE.AxesHelper(5);
-// scene.add(axesHelper);
-// 创建着色器材质;
 
 
 // 初始化渲染器
@@ -89,12 +98,15 @@ const createFireWork = () => {
     z: (Math.random() - 0.5) * 10,
   };
   let fireWork = new FireWork(color, position);
+  if (debugShow) {
+    fireWork.material.uniforms.uSize.value = debugObject.pointSize
+    fireWork.boomMaterial.uniforms.uSize.value = debugObject.explodePointSize
+  } 
   fireWork.addScene(scene, camera);
   fireWorks.push(fireWork);
 };
 
 const handleClick = (e) => {
-  console.log(e.keyCode);
   if(e.keyCode === 69) createFireWork()
 }
 
