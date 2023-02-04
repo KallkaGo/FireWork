@@ -11,7 +11,7 @@ webgl-3d-firework
 #在首次使用时下载并安装依赖
 npm install
 
-#在localhost：8080端口运行本地服务
+#在localhost：8088端口运行本地服务
 npm run dev
 
 #打包
