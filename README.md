@@ -1,6 +1,8 @@
 # FireWork
 webgl-3d-firework
 
+demo Url:[传送门](https://webgl-3d-firework.vercel.app/)
+
 基于webgl的3d烟花特效,花的形状是极坐标函数写的：[传送门](https://cloud.tencent.com/developer/article/1338291?from=10680)
 
 ## Setup
